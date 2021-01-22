@@ -11,4 +11,5 @@ public class Dept implements Serializable {
     public Dept(String name) {
         this.name = name;
     }
+
 }
