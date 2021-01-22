@@ -1,4 +1,4 @@
-package com.zy.pojo;
+package com.zy.springcloud.pojo;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,10 +10,11 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Accessors(chain = true)
 public class Dept implements Serializable {
-    private Integer id;
+    private Long id;
     private String name;
     // 数据库名
     private String dbSource;
+    private Integer isDelete;
 
     public Dept(String name) {
         this.name = name;

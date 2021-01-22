@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zy.springcloud.dao.DeptDao">
+    <resultMap id="BaseResultMap" type="com.zy.springcloud.pojo.Dept">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="db_source" jdbcType="VARCHAR" property="dbSource"/>
+        <result column="id_delete" jdbcType="INTEGER" property="isDelete"/>
+    </resultMap>
+
+    <sql id="tableName">
+        dept
+    </sql>
+
+    <sql id="BaseColumn">
+        id, `name`, db_source, id_delete
+    </sql>
+
+    <sql id="exist">
+        id_delete = 0
+    </sql>
+
+    <sql id="query-condition">
+        <if test="id != null">
+            id = #{id}
+        </if>
+        <if test="name != null">
+            AND `name` = #{name}
+        </if>
+        <if test="dbSource != null">
+            AND db_source = #{dbSource}
+        </if>
+        AND
+        <include refid="exist"/>
+    </sql>
+
+    <sql id="set">
+        <if test="name != null">
+            `name` = #{name},
+        </if>
+        <if test="dbSource != null">
+            db_source = #{dbSource},
+        </if>
+    </sql>
+
+    <select id="select" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumn"/>
+        from
+        <include refid="tableName"/>
+        where <include refid="exist" />;
+    </select>
+
+    <insert id="add" parameterType="com.zy.springcloud.pojo.Dept">
+        insert
+        <include refid="tableName"/>
+        <set>
+            <if test="name != null">
+                `name` = #{name},
+            </if>
+            db_source = DATABASE()
+        </set>;
+    </insert>
+
+    <update id="update" parameterType="com.zy.springcloud.pojo.Dept">
+        update
+        <include refid="tableName"/>
+        <set>
+            <include refid="set"/>
+        </set>
+        where id = #{id}
+        AND<include refid="exist"/>;
+    </update>
+
+    <update id="delete" parameterType="Long">
+        update
+        <include refid="tableName"/>
+        set id_delete = 1
+        where id = #{id};
+    </update>
+
+</mapper>
