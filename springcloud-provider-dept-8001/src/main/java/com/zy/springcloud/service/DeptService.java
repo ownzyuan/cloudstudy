@@ -14,4 +14,6 @@ public interface DeptService {
     
     int delete(Long id);
 
+    List<Dept> query(Dept dept);
+
 }

@@ -81,4 +81,14 @@
         where id = #{id};
     </update>
 
+    <select id="query" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumn"/>
+        from
+        <include refid="tableName"/>
+        <where>
+            <include refid="query-condition" />
+        </where>;
+    </select>
+
 </mapper>

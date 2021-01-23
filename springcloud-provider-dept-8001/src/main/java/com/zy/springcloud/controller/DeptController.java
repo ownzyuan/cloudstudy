@@ -46,4 +46,9 @@ public class DeptController {
         return deptService.select();
     }
 
+    @GetMapping("/query")
+    public List<Dept> query(Dept dept) {
+        return deptService.query(dept);
+    }
+
 }

@@ -29,4 +29,8 @@ public class DeptServiceImpl implements DeptService {
     public int delete(Long id) {
         return deptDao.delete(id);
     }
+
+    public List<Dept> query(Dept dept) {
+        return deptDao.query(dept);
+    }
 }

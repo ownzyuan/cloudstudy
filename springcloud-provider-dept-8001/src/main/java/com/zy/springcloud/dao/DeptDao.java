@@ -18,4 +18,6 @@ public interface DeptDao {
     
     int delete(Long id);
 
+    List<Dept> query(Dept dept);
+
 }
