@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/dept")
+@RequestMapping("/provider/dept/")
 public class DeptController {
 
     @Autowired
     private DeptService deptService;
 
-    @PostMapping("/add")
+    @PostMapping("add")
     public Boolean add(@RequestBody Dept dept) {
         int result = deptService.add(dept);
         if (result > 0) {
@@ -23,7 +23,7 @@ public class DeptController {
         return false;
     }
 
-    @PostMapping("/update")
+    @PostMapping("update")
     public Boolean update(@RequestBody Dept dept) {
         int result = deptService.update(dept);
         if (result > 0) {
@@ -32,7 +32,7 @@ public class DeptController {
         return false;
     }
 
-    @PostMapping("/delete")
+    @PostMapping("delete")
     public Boolean delete(@RequestBody Dept dept) {
         int result = deptService.delete(dept.getId());
         if (result > 0) {
@@ -41,13 +41,13 @@ public class DeptController {
         return false;
     }
 
-    @GetMapping("/select")
+    @GetMapping("select")
     public List<Dept> select() {
         return deptService.select();
     }
 
-    @GetMapping("/query")
-    public List<Dept> query(Dept dept) {
+    @PostMapping("query")
+    public List<Dept> query(@RequestBody Dept dept) {
         return deptService.query(dept);
     }
 
