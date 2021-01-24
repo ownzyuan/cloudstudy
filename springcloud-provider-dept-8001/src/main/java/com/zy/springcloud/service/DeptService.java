@@ -8,11 +8,11 @@ public interface DeptService {
 
     List<Dept> select();
 
-    int add(Dept dept);
+    Boolean add(Dept dept);
 
-    int update(Dept dept);
+    Boolean update(Dept dept);
     
-    int delete(Long id);
+    Boolean delete(Long id);
 
     List<Dept> query(Dept dept);
 

@@ -18,16 +18,28 @@ public class DeptServiceImpl implements DeptService {
         return deptDao.select();
     }
 
-    public int add(Dept dept) {
-        return deptDao.add(dept);
+    public Boolean add(Dept dept) {
+        int result = deptDao.add(dept);
+        if (result > 0) {
+            return true;
+        }
+        return false;
     }
 
-    public int update(Dept dept) {
-        return deptDao.update(dept);
+    public Boolean update(Dept dept) {
+        int result = deptDao.update(dept);
+        if (result > 0) {
+            return true;
+        }
+        return false;
     }
 
-    public int delete(Long id) {
-        return deptDao.delete(id);
+    public Boolean delete(Long id) {
+        int result = deptDao.delete(id);
+        if (result > 0) {
+            return true;
+        }
+        return false;
     }
 
     public List<Dept> query(Dept dept) {

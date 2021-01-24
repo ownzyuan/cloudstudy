@@ -27,7 +27,7 @@
             id = #{id}
         </if>
         <if test="name != null">
-            AND `name` = #{name}
+            AND `name` like concat('%', #{name},%')
         </if>
         <if test="dbSource != null">
             AND db_source = #{dbSource}
